@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-const imageToRGB = (imageFile) => {
+const encodeImg = (imageFile, textToEncode) => {
   const reader = new FileReader();
   reader.readAsDataURL(imageFile);
   reader.onloadend = () => {
@@ -23,6 +23,8 @@ const imageToRGB = (imageFile) => {
       const data = imageData.data;
       const pixelRgbArray = [];
 
+      const octalTextArray = textToOctal(textToEncode);
+
       for (let i = 0; i < data.length; i += 4) {
         const rgb = {
           r: data[i],
@@ -32,6 +34,8 @@ const imageToRGB = (imageFile) => {
         pixelRgbArray.push(rgb);
       }
       console.log(pixelRgbArray);
+
+      console.log(octalTextArray);
     };
   };
 };
@@ -64,6 +68,7 @@ const FileUpload = () => {
 
     // Display the encoded image Update image URL state
     // reader.onloadend = () => setEncodedImgUrl(reader.result);
+    encodeImg(selectedFile, textToEncode);
   };
 
   return (
