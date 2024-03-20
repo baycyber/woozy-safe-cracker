@@ -1,18 +1,7 @@
-import FileUpload from "./components/FileUpload";
+import WebSocket from "./components/WebSocket";
 
-const App = () => {
-  return (
-    <>
-      <div>
-        <div>
-          <h1>Encode an image with text</h1>
-        </div>
-        <div>
-          <FileUpload />
-        </div>
-      </div>
-    </>
-  );
-};
+function App() {
+  return <WebSocket />;
+}
 
 export default App;
